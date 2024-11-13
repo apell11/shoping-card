@@ -1,0 +1,690 @@
+/* src/App.css */
+
+/* Reset dasar dan body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    line-height: 1.6;
+    padding: 30px;
+    overflow-x: hidden;
+  }
+  
+  /* Tampilan grid untuk app */
+  .app {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 40px;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 70%;
+    animation: fadeIn 1.5s forwards;
+  }
+  
+  .product-card {
+    background: linear-gradient(45deg, #56ab2f, #a8e063); /* Green gradient */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.98);
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .product-card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .product-card button {
+    background-color: #ff7f50; /* Coral color */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-card button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: #ff6347; /* Tomato */
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  
+  .product-card button:hover {
+    transform: translateY(-4px);
+    background-color: #ff6347; /* Tomato */
+  }
+  
+  .product-card button:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .product-card button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Styling untuk keranjang */
+  .cart-container {
+    width: 28%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  }
+  
+  .cart-container:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  }
+  
+  .cart-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .cart-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-item h4 {
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1;
+    font-weight: bold;
+  }
+  
+  .cart-item input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .cart-item input:focus {
+    border-color: #56ab2f;
+    outline: none;
+  }
+  
+  .cart-item button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .cart-item button:hover {
+    background-color: #c82333;
+    transform: translateY(-3px);
+  }
+  
+  .cart-item button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Styling untuk total harga keranjang */
+  .cart-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+  }
+  
+  .cart-total h3 {
+    font-size: 24px;
+    color: #28a745;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .cart-total:hover h3 {
+    color: #218838;
+  }
+  
+  /* Styling untuk keranjang kosong */
+  .cart-empty {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* Animasi Fade In */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .app {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .product-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+/* Styling untuk keranjang */
+.cart-container {
+    width: 28%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  }
+  
+  .cart-container:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cart-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+  }
+  
+  /* Efek dekorasi pada judul */
+  .cart-container h2:before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: #56ab2f; /* Green color */
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+  }
+  
+  /* Item keranjang */
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .cart-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animasi untuk item keranjang */
+  .cart-item h4 {
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .cart-item:hover h4 {
+    color: #56ab2f; /* Green color */
+  }
+  
+  .cart-item input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .cart-item input:focus {
+    border-color: #56ab2f;
+    outline: none;
+  }
+  
+  .cart-item button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cart-item button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: #ff6347; /* Tomato */
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  
+  .cart-item button:hover {
+    background-color: #c82333; /* Dark red */
+    transform: translateY(-3px);
+  }
+  
+  .cart-item button:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .cart-item button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Styling untuk total harga keranjang */
+  .cart-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .cart-total h3 {
+    font-size: 24px;
+    color: #28a745; /* Green */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .cart-total:hover h3 {
+    color: #218838;
+  }
+  
+  .cart-empty {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    font-style: italic;
+    margin-top: 30px;
+  }
+  
+  /* Efek transisi saat keranjang kosong */
+  .cart-empty {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .app {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .product-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+/* Styling untuk keranjang */
+.cart-container {
+    width: 28%;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9); /* Gradasi lembut */
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px); /* Efek blur latar belakang */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-container:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+  }
+  
+  /* Judul Keranjang */
+  .cart-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  /* Garis dekoratif di bawah judul */
+  .cart-container h2:before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #56ab2f; /* Hijau segar */
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+  }
+  
+  /* Styling untuk card di dalam keranjang */
+  .cart-item-card {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cart-item-card:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+  }
+  
+  .cart-item-card h4 {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .cart-item-card:hover h4 {
+    color: #56ab2f; /* Warna hijau saat hover */
+  }
+  
+  /* Styling untuk harga dan kuantitas */
+  .cart-item-card .item-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .cart-item-card .item-details span {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .cart-item-card .item-details .item-quantity input {
+    width: 50px;
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  .cart-item-card .item-details .item-quantity input:focus {
+    border-color: #56ab2f;
+    outline: none;
+    background-color: #eaffea;
+  }
+  
+  /* Tombol hapus untuk tiap card */
+  .cart-item-card .remove-item {
+    background-color: #dc3545; /* Warna merah untuk hapus */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cart-item-card .remove-item:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: #ff6347; /* Warna tomat */
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  
+  .cart-item-card .remove-item:hover {
+    background-color: #c82333;
+    transform: translateY(-3px);
+  }
+  
+  .cart-item-card .remove-item:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .cart-item-card .remove-item:active {
+    transform: scale(0.95);
+  }
+  
+  /* Styling untuk total harga keranjang */
+  .cart-total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .cart-total h3 {
+    font-size: 28px;
+    color: #28a745; /* Warna hijau segar */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .cart-total:hover h3 {
+    color: #218838; /* Warna hijau lebih gelap saat hover */
+  }
+  
+  /* Menangani keranjang kosong */
+  .cart-empty {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    font-style: italic;
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  /* Animasi fade-in untuk keranjang kosong */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .app {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .product-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .cart-container {
+      width: 100%;
+    }
+  }
+  body {
+    background: linear-gradient(135deg, rgba(0, 204, 255, 0.2), rgba(0, 0, 0, 0.1));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  @keyframes gradientAnimation {
+    0% {
+      background: linear-gradient(135deg, #f5af19, #f12711); /* Warna oranye ke merah */
+    }
+    50% {
+      background: linear-gradient(135deg, #2b5876, #4e4376); /* Warna biru ke ungu */
+    }
+    100% {
+      background: linear-gradient(135deg, #f5af19, #f12711);
+    }
+  }
+  
+  body {
+    animation: gradientAnimation 10s ease infinite; /* Animasi gradasi berjalan */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Arial', sans-serif;
+  }
+    
